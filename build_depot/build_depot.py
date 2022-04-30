@@ -74,15 +74,15 @@ def check(args):
             mark = [m.value for m in jsonpath.parse(path).find(instance)][0]
 
             sep = '\n- '
-            by_file[f'{name}.yaml']['counts']['failure'] += 1
-            by_file[f'{name}.yaml']['details'].append({
+            by_file[name]['counts']['failure'] += 1
+            by_file[name]['details'].append({
                 'category': 'failure',
                 'title': error.message,
                 'message': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
                 'startLine': mark['start']['line'],
                 'startColumn': mark['start']['col']
             })
-            print(f'\t{name}.yaml:{mark["start"]["line"]}:{mark["start"]["col"]} {error.json_path}: {error.message}')
+            print(f'\t{name}:{mark["start"]["line"]}:{mark["start"]["col"]} {error.json_path}: {error.message}')
 
             for suberror in sorted(error.context, key=lambda e: e.schema_path):
                 print(f"\t\t{'.'.join(list(suberror.path))}: {suberror.message}")

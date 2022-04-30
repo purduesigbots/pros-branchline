@@ -17,10 +17,17 @@ jobs:
         id: changed-files
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            template/*.yaml
+          files_ignore: |
+            .github/*
       - run: python -m pip install .
+        if: steps.changed-files.outputs.any_changed == 'true'
       - run: pwd && build-depot -o checks.json ${{ steps.changed-files.outputs.all_changed_files }}
+        if: steps.changed-files.outputs.any_changed == 'true'
         continue-on-error: true
       - uses: agyemanjp/ci-checks-action@v2.1.1
+        if: steps.changed-files.outputs.any_changed == 'true'
         with:
           ghToken: ${{ secrets.GITHUB_TOKEN }}
           checks: |
