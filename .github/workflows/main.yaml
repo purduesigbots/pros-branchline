@@ -18,9 +18,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            template/*.yaml
+            template/**/*.yaml
           files_ignore: |
-            .github/*
+            .github/**/*
       - run: python -m pip install .
         if: steps.changed-files.outputs.any_changed == 'true'
       - run: pwd && build-depot -o checks.json ${{ steps.changed-files.outputs.all_changed_files }}
