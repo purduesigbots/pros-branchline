@@ -77,10 +77,7 @@ def check(args):
             sep = '\n- '
             checks.append({
                 'path': name,
-                'start_line': mark['start']['line'],
-                'start_column': mark['start']['col'],
-                'end_line': mark['end']['line'],
-                'end_column': mark['end']['col'],
+                'line': mark['start']['line'],
                 'title': error.message,
                 'message': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
                 'annotation_level': 'failure',
