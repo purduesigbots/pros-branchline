@@ -33,11 +33,11 @@ def _load_templates(paths: List[pathlib.Path]):
     for path in paths:
         if path.is_dir():
             templates.update({
-                f'{t.stem}': yaml.load(t.open('r'), MarkedSafeLoader) for t in path.iterdir() if t.suffix == '.yaml'
+                f'{t}': yaml.load(t.open('r'), MarkedSafeLoader) for t in path.iterdir() if t.suffix == '.yaml'
             })
         else:
             if path.suffix == '.yaml':
-                templates.update(**{f'{path.stem}': yaml.load(path.open('r'), MarkedSafeLoader)})
+                templates.update(**{f'{path}': yaml.load(path.open('r'), MarkedSafeLoader)})
     return templates
 
 
@@ -56,7 +56,7 @@ def check(args):
     for name, instance in templates.items():
         print(f'Validating {name}: ')
 
-        by_file[f'{name}.yaml'] = {
+        by_file[name] = {
             'counts': {
                 'failure': 0
             },
