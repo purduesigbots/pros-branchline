@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
-            template/**/*.yaml
+            templates/*.yaml
           files_ignore: |
             .github/**/*
       - run: python -m pip install .
