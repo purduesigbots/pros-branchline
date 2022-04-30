@@ -18,7 +18,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: python -m pip install .
-      - run: build-depot -o checks.json ${{ steps.changed-files.outputs.all_changed_files }}
+      - run: pwd && build-depot -o checks.json ${{ steps.changed-files.outputs.all_changed_files }}
         continue-on-error: true
       - uses: agyemanjp/ci-checks-action@v2.1.1
         with:
