@@ -51,18 +51,10 @@ def check(args):
     validator = jsonschema.Draft202012Validator(schema)
 
     checks = []
-    by_file = {}
 
     failure = False
     for name, instance in templates.items():
         print(f'Validating {name}: ')
-
-        by_file[name] = {
-            'counts': {
-                'failure': 0
-            },
-            'details': []
-        }
 
         for error in validator.iter_errors(instance):
             path = error.json_path
@@ -75,21 +67,13 @@ def check(args):
             mark = [m.value for m in jsonpath.parse(path).find(instance)][0]
 
             sep = '\n- '
+            m = jsonschema.exceptions.best_match(error.context)
             checks.append({
                 'path': name,
                 'line': mark['start']['line'],
                 'title': 'PROS template schema validation error',
-                'message': error.message,
-                'raw_details': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
+                'message': m.message if m is not None else error.message,
                 'annotation_level': 'failure',
-            })
-            by_file[name]['counts']['failure'] += 1
-            by_file[name]['details'].append({
-                'category': 'failure',
-                'title': error.message,
-                'message': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
-                'startLine': mark['start']['line'],
-                'startColumn': mark['start']['col']
             })
             print(f'\t{name}:{mark["start"]["line"]}:{mark["start"]["col"]} {error.json_path}: {error.message}')
 
@@ -99,15 +83,6 @@ def check(args):
             failure = True
 
         print('PASS' if not failure else 'FAIL')
-
-        check_results = {
-            'name': 'PROS Template Schema Validation',
-            'summary': 'PASS' if not failure else 'FAIL',
-            'counts': {
-                'failure': sum([val['counts']['failure'] for _, val in by_file.items()])
-            },
-            'byFile': by_file
-        }
 
         if args.output_file is not None:
             with open(args.output_file, 'w') as f:
