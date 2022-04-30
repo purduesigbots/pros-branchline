@@ -75,13 +75,12 @@ def check(args):
             mark = [m.value for m in jsonpath.parse(path).find(instance)][0]
 
             sep = '\n- '
-            msg = f'{error.message}' + \
-                  f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}'
             checks.append({
                 'path': name,
                 'line': mark['start']['line'],
                 'title': 'PROS template schema validation error',
-                'message': msg,
+                'message': error.message,
+                'raw_details': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
                 'annotation_level': 'failure',
             })
             by_file[name]['counts']['failure'] += 1
