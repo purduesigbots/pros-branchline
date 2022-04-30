@@ -26,13 +26,18 @@ jobs:
       - run: pwd && build-depot -o checks.json ${{ steps.changed-files.outputs.all_changed_files }}
         if: steps.changed-files.outputs.any_changed == 'true'
         continue-on-error: true
-      - uses: agyemanjp/ci-checks-action@v2.1.1
-        if: steps.changed-files.outputs.any_changed == 'true'
+      - uses: yuzutech/annotations-action@v0.4.0
         with:
-          ghToken: ${{ secrets.GITHUB_TOKEN }}
-          checks: |
-            [{
-              "name": "validate",
-              "fileName": "checks.json",
-              "prChangesOnly": true
-            }]
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          title: validate
+          input: ./checks.json
+#      - uses: agyemanjp/ci-checks-action@v2.1.1
+#        if: steps.changed-files.outputs.any_changed == 'true'
+#        with:
+#          ghToken: ${{ secrets.GITHUB_TOKEN }}
+#          checks: |
+#            [{
+#              "name": "validate",
+#              "fileName": "checks.json",
+#              "prChangesOnly": true
+#            }]

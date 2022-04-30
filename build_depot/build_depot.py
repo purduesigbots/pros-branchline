@@ -50,6 +50,7 @@ def check(args):
     )
     validator = jsonschema.Draft202012Validator(schema)
 
+    checks = []
     by_file = {}
 
     failure = False
@@ -74,6 +75,13 @@ def check(args):
             mark = [m.value for m in jsonpath.parse(path).find(instance)][0]
 
             sep = '\n- '
+            checks.append({
+                'file': name,
+                'line': mark['start']['line'],
+                'title': error.message,
+                'message': f'{sep.join([s.message for s in sorted(error.context, key=lambda e: e.schema_path)])}',
+                'annotation_level': 'failure',
+            })
             by_file[name]['counts']['failure'] += 1
             by_file[name]['details'].append({
                 'category': 'failure',
@@ -102,7 +110,7 @@ def check(args):
 
         if args.output_file is not None:
             with open(args.output_file, 'w') as f:
-                f.write(jsonpickle.pickler.encode(check_results, indent=3, unpicklable=False))
+                f.write(jsonpickle.pickler.encode(checks, indent=3, unpicklable=False))
 
     return failure
 
