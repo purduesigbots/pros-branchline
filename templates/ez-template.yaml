@@ -1,0 +1,41 @@
+---
+name: EZ-Template
+# specify common target for templates. can be overridden by specifying target for a version
+target: v5
+# specify a common location pattern for all versions. the name variable is the same as the top level key and the
+# version variable will be inserted for each version specified. can be overridden by specifying location for a version,
+# but must either be specified once here or in every version
+location: https://github.com/EZ-Robotics/{name}/releases/download/{version}/{name}@{version}.zip
+# the metadata key and its contents are all optional
+metadata:
+  description: Simple plug-and-play PROS template that handles drive base functions for VEX robots.
+  website: https://ez-robotics.github.io/EZ-Template/
+  license: MPL2
+  # this one should be alternating entries of name and email, like PEP621 specifies for the pyproject.toml project.authors
+  # key
+  # authors:
+  #   - hotel
+  #   - HotelCalifornia@users.noreply.github.com
+  # keywords:
+  #   - ez
+  #   - c++20
+  #   - hotel
+versions:
+  # the shorthand: template-version => semver range string of supported kernel versions
+  # 0.0.1: "^3.5.5-dirty.6.c83ad26"
+  # can specify overrides with the full spec:
+  # template-version => { kernel: semver-range, location: url, target: v5|cortex }
+  # 0.0.2:
+  #   kernel: ">3.5.5,<4.0.0"
+  #   location: https://pros.cs.purdue.edu/v5/_static/releases/{name}.{version}.zip
+  # 0.0.1-c:
+  #   kernel: ">3.0.0"
+  #   target: cortex
+  v2.1.1:
+    kernel: ">3.5.2,<4.0.0"
+  v2.1.0:
+    kernel: ">3.5.2,<4.0.0"
+  v2.0.1:
+    kernel: ">3.5.2,<4.0.0"
+  v2.0.0:
+    kernel: ">3.5.2,<4.0.0"
