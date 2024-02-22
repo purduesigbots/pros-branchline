@@ -1,6 +1,7 @@
 name: Build Template
 
 on:
+  push:
   pull_request:
 
 jobs:
