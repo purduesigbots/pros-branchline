@@ -12,12 +12,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python
-        uses: actions/setup-python@v4.3.0
-        with:
-          python-version: 3.9
-          cache: 'pip'
-      
       - name: Install CLI
         run: python3 -m pip install pros-cli
 
