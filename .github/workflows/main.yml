@@ -12,7 +12,7 @@ jobs:
         with:
           fetch-depth: 0
           name: lemlib/lemlib
-          ref: refs/heads/master
+          ref: master
 
       - name: Install CLI
         run: python3 -m pip install pros-cli
