@@ -1,8 +1,17 @@
 name: Build Template
 
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
+    inputs:
+      repository:
+        type: string
+        required: true
+      name:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
 
 jobs:
   build-template:
@@ -10,13 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3.1.0
         with:
-          fetch-depth: 0
-          name: lemlib/lemlib
-          ref: master
+          repository: ${{ github.event.inputs.repository }}
+          ref: refs/heads/master
 
       - name: Install CLI
         run: python3 -m pip install pros-cli
       
-      - name: Build template
-        run: pros c create-template
+      - name: Create template
+        run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }}
+
+      - name: Look for template
+        run: ls
 
