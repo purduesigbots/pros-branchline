@@ -6,7 +6,8 @@
     "name": "kernel",
     "py/object": "pros.conductor.templates.base_template.BaseTemplate",
     "target": "v5",
-    "tags": "test pros"
+    "tags": "test pros",
+    "repository": "purduesigbots/pros"
   },
   {
     "metadata": {
@@ -15,6 +16,7 @@
     "name": "okapilib",
     "py/object": "pros.conductor.templates.base_template.BaseTemplate",
     "target": "v5",
-    "tags": "test pros"
+    "tags": "test pros",
+    "repository": "purduesigbots/OkapiLib"
   }
 ]
