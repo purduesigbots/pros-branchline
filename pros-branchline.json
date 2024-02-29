@@ -18,11 +18,5 @@
     "target": "v5",
     "tags": "test pros",
     "repository": "purduesigbots/OkapiLib"
-  },
-  {
-    "metadata": {
-      "versions": "pros-branchline/templates/ARMS.json"
-    },
-    "name": "ARMS"
   }
 ]
