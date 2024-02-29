@@ -21,8 +21,8 @@
   },
   {
     "metadata": {
-      "versions": "pros-branchline/templates/ARMS.json"
+      "versions": "pros-branchline/templates/liblvgl.json"
     },
-    "name": "ARMS"
+    "name": "liblvgl"
   }
 ]
