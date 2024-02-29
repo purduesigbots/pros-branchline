@@ -32,5 +32,12 @@
     },
     "name": "LemLib",
     "repository": "lemlib/lemlib"
+  },
+  {
+    "metadata": {
+      "versions": "pros-branchline/templates/ARMS.json"
+    },
+    "name": "ARMS",
+    "repository": "purduesigbots/ARMS"
   }
 ]
