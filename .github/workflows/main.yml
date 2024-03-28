@@ -27,7 +27,7 @@ jobs:
         run: python3 -m pip install pros-cli
       
       - name: Create template
-        run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} --project template-repo
+        run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} --project ${{ github.event.inputs.name }}
 
       - uses: actions/checkout@v3.1.0
         with:
