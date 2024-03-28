@@ -28,6 +28,13 @@ jobs:
       - name: Create template
         run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }}
 
+      - uses: actions/checkout@v3.1.0
+        with:
+          repository: purduesigbots/pros-docs
+          ref: refs/heads/test-branchline-uploads 
+          path: pros-docs
+
       - name: Look for template
         run: ls
+
 
