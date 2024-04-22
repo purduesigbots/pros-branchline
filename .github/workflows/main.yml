@@ -1,0 +1,41 @@
+name: Build Template
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        type: string
+        required: true
+      name:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+
+jobs:
+  build-template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.1.0
+        with:
+          repository: ${{ github.event.inputs.repository }}
+          ref: refs/heads/master
+          path: template-repo
+
+      - name: Install CLI
+        run: python3 -m pip install pros-cli
+      
+      - name: Create template
+        run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} --project ${{ github.event.inputs.name }}
+
+      - uses: actions/checkout@v3.1.0
+        with:
+          repository: purduesigbots/pros-docs
+          ref: refs/heads/test-branchline-uploads 
+          path: pros-docs
+
+      - name: Look for template
+        run: ls
+
+
