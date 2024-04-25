@@ -1,4 +1,4 @@
-name: Build Template
+name: build-template
 
 on:
   workflow_dispatch:
