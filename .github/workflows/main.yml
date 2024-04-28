@@ -12,16 +12,30 @@ on:
       version:
         type: string
         required: true
+      new_template:
+        type: boolean
+        required: true
 
 jobs:
   build-template:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: pros-branchline
+
+      - uses: actions/checkout@v4
         with:
           repository: ${{ github.event.inputs.repository }}
           ref: refs/heads/master
           path: template-repo
+
+      - uses: actions/checkout@v4
+        with:
+          repository: purduesigbots/pros-docs
+          ref: refs/heads/test-branchline-uploads 
+          path: pros-docs
 
       - name: Install CLI
         run: python3 -m pip install pros-cli
@@ -29,13 +43,12 @@ jobs:
       - name: Create template
         run: pros c create-template . ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} --project ${{ github.event.inputs.name }}
 
-      - uses: actions/checkout@v3.1.0
-        with:
-          repository: purduesigbots/pros-docs
-          ref: refs/heads/test-branchline-uploads 
-          path: pros-docs
-
       - name: Look for template
         run: ls
 
+      - name: Move template to pros-docs
+        run: python3 upload.py ${{ github.event.inputs.name }} ${{ github.event.inputs.version }}
+
+      - name: Look for zip
+        run: tree pros-docs/v5/_static/branchline
 
