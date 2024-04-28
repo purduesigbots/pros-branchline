@@ -41,8 +41,9 @@ def main():
     # Retrieve command-line arguments
     name = sys.argv[1]
     version = sys.argv[2]
+    # new_template = sys.argv[3]
 
-    upload(name, version, False)
+    upload(name, version, True)
 
 if __name__ == "__main__":
     main()
