@@ -19,8 +19,8 @@ def upload(name: str, version: str, new_template: bool):
     
     """
     # update registry files
-    shutil.copyfile('pros-branchline/pros-branchline.json', BASE_PATH)
-    shutil.copyfile(f'pros-branchline/templates/{name}.json', f'{BASE_PATH}/templates')
+    shutil.copyfile('pros-branchline/pros-branchline.json', f'{BASE_PATH}/pros-branchline.json')
+    shutil.copyfile(f'pros-branchline/templates/{name}.json', f'{BASE_PATH}/templates/{name}.json')
 
     # move zip
     if new_template:
