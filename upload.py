@@ -25,7 +25,7 @@ def upload(name: str, version: str, new_template: bool):
     # move zip
     if new_template:
         os.mkdir(f'{BASE_PATH}/{name}')
-    shutil.move(f'{name}@{version}.zip', f'{BASE_PATH}/{name}')
+    shutil.copyfile(f'{name}@{version}.zip', f'{BASE_PATH}/{name}/{name}@{version}.zip')
 
     print('Finished upload')
 
