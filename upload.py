@@ -33,7 +33,7 @@ def upload(name: str, version: str, new_template: int, token: str):
     # TODO: make a PR or push to main?
     subprocess.run('git -C pros-docs add .', shell=True)
     subprocess.run(f'git -C pros-docs commit -m \"[BRANCHLINE] Update {name}\"', shell=True)
-    subprocess.run(f'git -C pros-docs https://{token}@github.com/purduesigbots/pros-docs', shell=True)
+    subprocess.run(f'git -C pros-docs push https://{token}@github.com/purduesigbots/pros-docs', shell=True)
 
 
 def main():
