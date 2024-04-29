@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: purduesigbots/pros-docs
-          ref: refs/heads/test-branchline-uploads 
+          ref: refs/heads/master 
           token: ${{ secrets.MY_TOKEN || github.token }}
           path: pros-docs
 
