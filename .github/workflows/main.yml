@@ -12,6 +12,9 @@ on:
       version:
         type: string
         required: true
+      new_template:
+        type: string
+        required: true
 
 jobs:
   build-template:
