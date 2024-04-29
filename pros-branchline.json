@@ -5,5 +5,12 @@
     },
     "name": "kernel",
     "target": "v5"
+  },
+  {
+    "metadata": {
+      "versions": "pros-branchline/templates/okapilib.json"
+    },
+    "name": "okapilib",
+    "target": "v5"
   }
 ]
