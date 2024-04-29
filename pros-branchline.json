@@ -21,6 +21,6 @@
     },
     "name": "LemLib",
     "target": "v5",
-    "repository": "purduesigbots/pros"
+    "repository": "lemlib/lemlib"
   }
 ]
