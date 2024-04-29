@@ -1,9 +1,0 @@
-[
-  {
-    "metadata": {
-      "versions": "pros-branchline/templates/kernel.json"
-    },
-    "name": "kernel",
-    "target": "v5"
-  }
-]
