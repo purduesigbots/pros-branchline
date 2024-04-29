@@ -9,7 +9,7 @@ import sys
 BASE_PATH = 'pros-docs/v5/_static/branchline'
 DOCS_REPO_URL = 'https://github.com/purduesigbots/pros-docs.git'
 
-def upload(name: str, version: str, new_template: int, token: str):
+def upload(name: str, version: str, new_template: int):
     """
 
     Uploads a template and updated registry files to docs.
@@ -46,9 +46,8 @@ def main():
     name = sys.argv[1]
     version = sys.argv[2]
     new_template = sys.argv[3]
-    token = sys.argv[4]
 
-    upload(name, version, int(new_template), token)
+    upload(name, version, int(new_template))
 
 if __name__ == "__main__":
     main()
