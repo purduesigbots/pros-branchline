@@ -9,7 +9,7 @@ import sys
 BASE_PATH = 'pros-docs/v5/_static/branchline'
 DOCS_REPO_URL = 'https://github.com/purduesigbots/pros-docs.git'
 
-def upload(name: str, version: str, new_template: bool):
+def upload(name: str, version: str, new_template: int, token: str):
     """
 
     Uploads a template and updated registry files to docs.
@@ -23,7 +23,7 @@ def upload(name: str, version: str, new_template: bool):
     shutil.copyfile(f'pros-branchline/templates/{name}.json', f'{BASE_PATH}/templates/{name}.json')
 
     # move zip
-    if new_template:
+    if new_template == 1:
         os.mkdir(f'{BASE_PATH}/{name}')
     shutil.copyfile(f'{name}@{version}.zip', f'{BASE_PATH}/{name}/{name}@{version}.zip')
 
@@ -31,6 +31,10 @@ def upload(name: str, version: str, new_template: bool):
 
     # push changes
     # TODO: make a PR or push to main?
+    subprocess.run('git -C pros-docs add .', shell=True)
+    subprocess.run(f'git -C pros-docs commit -m \"[BRANCHLINE] Update {name}\"', shell=True)
+    subprocess.run('git -C pros-docs push', shell=True)
+
 
 def main():
     # Check if the correct number of arguments is provided
@@ -41,9 +45,10 @@ def main():
     # Retrieve command-line arguments
     name = sys.argv[1]
     version = sys.argv[2]
-    # new_template = sys.argv[3]
+    new_template = sys.argv[3]
+    token = sys.argv[4]
 
-    upload(name, version, True)
+    upload(name, version, int(new_template), token)
 
 if __name__ == "__main__":
     main()

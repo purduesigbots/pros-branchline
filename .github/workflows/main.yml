@@ -35,6 +35,7 @@ jobs:
         with:
           repository: purduesigbots/pros-docs
           ref: refs/heads/test-branchline-uploads 
+          token: ${{ secrets.GH_TOKEN }}
           path: pros-docs
 
       - name: Install CLI
@@ -47,8 +48,7 @@ jobs:
         run: ls
 
       - name: Move template to pros-docs
-        run: python3 pros-branchline/upload.py ${{ github.event.inputs.name }} ${{ github.event.inputs.version }}
-
+        run: python3 pros-branchline/upload.py ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} ${{ github.event.inputs.new_template }} 
       - name: Look for zip
         run: tree pros-docs/v5/_static/branchline
 
