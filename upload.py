@@ -9,7 +9,7 @@ import sys
 BASE_PATH = 'pros-docs/v5/_static/branchline'
 DOCS_REPO_URL = 'https://github.com/purduesigbots/pros-docs.git'
 
-def upload(name: str, version: str, new_template: int):
+def upload(name: str, version: str, new_template: int, token: str):
     """
 
     Uploads a template and updated registry files to docs.
@@ -33,7 +33,7 @@ def upload(name: str, version: str, new_template: int):
     # TODO: make a PR or push to main?
     subprocess.run('git -C pros-docs add .', shell=True)
     subprocess.run(f'git -C pros-docs commit -m \"[BRANCHLINE] Update {name}\"', shell=True)
-    subprocess.run(f'git -C pros-docs', shell=True)
+    subprocess.run(f'git -C pros-docs https://{token}@github.com/purduesigbots/pros-docs', shell=True)
 
 
 def main():
@@ -46,8 +46,9 @@ def main():
     name = sys.argv[1]
     version = sys.argv[2]
     new_template = sys.argv[3]
+    token = sys.argv[4]
 
-    upload(name, version, int(new_template))
+    upload(name, version, int(new_template), token)
 
 if __name__ == "__main__":
     main()
