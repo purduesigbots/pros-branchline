@@ -35,7 +35,7 @@ jobs:
         with:
           repository: purduesigbots/pros-docs
           ref: refs/heads/test-branchline-uploads 
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.MY_TOKEN || github.token }}
           path: pros-docs
 
       - name: Install CLI
