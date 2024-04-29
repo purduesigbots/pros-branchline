@@ -5,5 +5,12 @@
     },
     "version": "3.2.0",
     "supported_kernels": ">=3.3.1"
+  },
+  {
+    "metadata": {
+      "location": "https://pros.cs.purdue.edu/v5/_static/releases/ARMS@3.1.1.zip"
+    },
+    "version": "3.1.1",
+    "supported_kernels": ">=3.3.1"
   }
 ]
