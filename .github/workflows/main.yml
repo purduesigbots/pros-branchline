@@ -51,8 +51,8 @@ jobs:
         env:
           GH_PAT: ${{ secrets.MY_TOKEN || github.token }}
         run: |
-          git config --global credential.helper "store --file ~/.git-credentials"
-          echo "https://${GH_PAT}@github.com" > ~/.git-credentials
+          git config --global credential.helper "store --file ~/pros-docs/.git-credentials"
+          echo "https://${GH_PAT}@github.com" > ~/pros-docs/.git-credentials
           python3 pros-branchline/upload.py ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} ${{ github.event.inputs.new_template }} 
       - name: Look for zip
         run: tree pros-docs/v5/_static/branchline
