@@ -26,5 +26,12 @@
     },
     "version": "3.7.3",
     "supported_kernels": "null"
+  },
+  {
+    "metadata": {
+      "location": "https://pros.cs.purdue.edu/v5/_static/releases/kernel@3.7.2.zip"
+    },
+    "version": "3.7.2",
+    "supported_kernels": "null"
   }
 ]
