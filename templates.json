@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "metadata": {
+      "versions": "pros-branchline/templates/ARMS.json"
+    },
+    "name": "ARMS",
+    "target": "v5"
+  }
+]
