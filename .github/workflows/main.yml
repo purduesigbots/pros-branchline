@@ -47,6 +47,11 @@ jobs:
       - name: Look for template
         run: ls
 
+      - name: Set git credentials
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+
       - name: Move template to pros-docs
         run: python3 pros-branchline/upload.py ${{ github.event.inputs.name }} ${{ github.event.inputs.version }} ${{ github.event.inputs.new_template }} ${{ secrets.MY_TOKEN }}
 
