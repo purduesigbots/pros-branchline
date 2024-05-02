@@ -30,5 +30,13 @@
     "name": "ARMS",
     "target": "v5",
     "repository": "purduesigbots/ARMS"
+  },
+  {
+    "metadata": {
+      "versions": "pros-branchline/templates/VOSS.json"
+    },
+    "name": "VOSS",
+    "target": "v5",
+    "repository": "purduesigbots/VOSS"
   }
 ]
