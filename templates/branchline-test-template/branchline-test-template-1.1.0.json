@@ -1,0 +1,22 @@
+{
+    "author": "Mayank Patibandla",
+    "dependencies": [
+        "test-dependency",
+        "test-dependency-2"
+    ],
+    "documentation_url": "https://github.com/mayankpatibandla/branchline-test-template/docs",
+    "git_tag_name": "1.1.0",
+    "icon_file": "icon.png",
+    "license": "MIT",
+    "long_description_markdown_file": "README.md",
+    "name": "branchline-test-template",
+    "repository_url": "https://github.com/mayankpatibandla/branchline-test-template",
+    "sha": "5f3f9df032b4a7bd48c40ac8f6f9547915bad534",
+    "short_description": "A test template for Branchline",
+    "tags": [
+        "branchline",
+        "test",
+        "template"
+    ],
+    "version": "1.1.0"
+}
