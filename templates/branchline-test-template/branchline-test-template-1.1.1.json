@@ -1,0 +1,23 @@
+{
+    "author": "Mayank Patibandla",
+    "blob_url": "https://branchlinestorage.blob.core.windows.net/branchline/templates/branchline-test-template/branchline-test-template@1.1.1.zip",
+    "dependencies": [
+        "kernel@4",
+        "VOSS@0.1.2"
+    ],
+    "documentation_url": "https://github.com/mayankpatibandla/branchline-test-template/docs",
+    "git_tag_name": "1.1.1",
+    "icon_file": "icon.png",
+    "license": "MIT",
+    "long_description_markdown_file": "README.md",
+    "name": "branchline-test-template",
+    "repository_url": "https://github.com/mayankpatibandla/branchline-test-template",
+    "sha": "3682bc44da7aee935c8ee0497a61cce95ce7c8c1",
+    "short_description": "A test template for Branchline",
+    "tags": [
+        "branchline",
+        "test",
+        "template"
+    ],
+    "version": "1.1.1"
+}
