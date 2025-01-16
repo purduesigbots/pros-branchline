@@ -1,6 +1,5 @@
 {
     "author": "Mayank Patibandla",
-    "blob_url": "https://branchlinestorage.blob.core.windows.net/branchline/templates/branchline-test-template/branchline-test-template@1.1.1.zip",
     "dependencies": [
         "kernel@4",
         "VOSS@0.1.2"
